@@ -93,16 +93,3 @@ class ArticleListViewController: UIViewController {
     }
 }
 
-
-//collectionView.rx.modelSelected(Article.self)
-//    .subscribe(onNext: { [weak self] article in
-//        
-//        
-//       let vc = NewsDetailViewController.init()
-//       self?.navigationController?.pushViewController(vc, animated: true)
-//        
-//        
-//        let detailVC = ArticleDetailViewController(article: article)
-//        self?.navigationController?.pushViewController(detailVC, animated: true)
-//    })
-//    .disposed(by: disposeBag)

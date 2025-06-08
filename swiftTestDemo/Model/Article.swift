@@ -11,7 +11,7 @@ struct Article: Codable, Identifiable {
     let title: String
     let summary: String
     let content: String
-    let imageUrl: String
+    let imageUrl: String?
     let contentHTML: String
     let isFavorited: Bool
     
