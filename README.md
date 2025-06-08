@@ -91,24 +91,10 @@ textField.rx.text
 
 ---
 
-## 📈 学习路径
-
-1. **从基础开始**：  
-   - 理解 `Observable` 和 `Observer` 模式。  
-   - 练习创建和订阅序列。  
-
-2. **掌握操作符**：  
-   - 使用 `map`、`flatMap`、`scan` 转换数据。  
-   - 通过 `filter`、`merge`、`zip` 过滤和组合序列。  
-
-3. **构建交互式 UI**：  
-   - 使用 `RxCocoa` 绑定 UI 元素。  
-   - 实现表单验证和动态更新。  
-
-4. **高级主题**：  
-   - 错误处理和重试策略。  
-   - 调度器（Scheduler）管理后台任务和 UI 更新。  
-
+#### 部分项目截图 
+  ![项目截图1](https://github.com/chenZai90/RxSwiftLearn/blob/main/screenshots/1.png)
+    ![项目截图2](https://github.com/chenZai90/RxSwiftLearn/blob/main/screenshots/2.png)
+      ![项目截图3](https://github.com/chenZai90/RxSwiftLearn/blob/main/screenshots/3.png)
 
 ---
 
