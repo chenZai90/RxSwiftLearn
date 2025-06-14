@@ -214,23 +214,18 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func jumpToVc(index: Int) {
-        
-        switch index {
-        case 0:
-            
-            self.navigationController?.pushViewController(ArticleListViewController.init(), animated: true)
-            
-            break;
-        case 1:
-            
-            
-            self.navigationController?.pushViewController(NewsDetailViewController.init(), animated: true)
-            
-            break;
-            
+        // 从 viewModel 获取控制器数组
+        let controllers = viewModel.allControllers()
 
-        default:
-            print("=====")
+        // 使用 guard let 判断 controllers 是否非空，并且 index 合法
+        guard !controllers!.isEmpty,
+              index >= 0,
+              index < controllers!.count else {
+            print("无效的 index 或 controllers 为空")
+            return
         }
+
+        // 安全跳转
+        self.navigationController?.pushViewController(controllers![index], animated: true)
     }
 }

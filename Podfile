@@ -5,7 +5,13 @@ target 'swiftTestDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-    pod 'RxSwift', '6.9.0'
-    pod 'RxCocoa', '6.9.0'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 
+    pod 'RxBlocking'
+    pod 'RxTest'
+    
+    pod 'SnapKit'
 end
+
+

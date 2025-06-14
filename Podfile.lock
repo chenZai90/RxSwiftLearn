@@ -1,26 +1,40 @@
 PODS:
+  - RxBlocking (6.9.0):
+    - RxSwift (= 6.9.0)
   - RxCocoa (6.9.0):
     - RxRelay (= 6.9.0)
     - RxSwift (= 6.9.0)
   - RxRelay (6.9.0):
     - RxSwift (= 6.9.0)
   - RxSwift (6.9.0)
+  - RxTest (6.9.0):
+    - RxSwift (= 6.9.0)
+  - SnapKit (5.7.1)
 
 DEPENDENCIES:
-  - RxCocoa (= 6.9.0)
-  - RxSwift (= 6.9.0)
+  - RxBlocking
+  - RxCocoa
+  - RxSwift
+  - RxTest
+  - SnapKit
 
 SPEC REPOS:
   trunk:
+    - RxBlocking
     - RxCocoa
     - RxRelay
     - RxSwift
+    - RxTest
+    - SnapKit
 
 SPEC CHECKSUMS:
+  RxBlocking: 5d2b26d019b6ba9eb3f58638611f124609c44822
   RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
   RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
   RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
+  RxTest: fa7749822359a10a19b9fa32b80dbe608e4ce44e
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: e1dc42a20fa4e623a5034b2bb3d0b5ec8648a773
+PODFILE CHECKSUM: 5e4196e2ee024e5161cda47f82433600a9c424d5
 
 COCOAPODS: 1.15.2

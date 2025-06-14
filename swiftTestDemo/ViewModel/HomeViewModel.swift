@@ -184,4 +184,13 @@ class HomeViewModel {
                     imageUrl: imageUrls.randomElement())
         ]
     }
-} 
+    
+//MARK: - 测试跳转的界面
+    func allControllers() -> [UIViewController]? {
+        
+        return [ArticleListViewController.init(),
+                NewsDetailViewController.init(),
+                RxSwiftBaseUseController.init()
+               ]
+    }
+}

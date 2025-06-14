@@ -15,6 +15,9 @@ class ArticleListViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var articles: [Article] = [] // 保存文章数据，供点击事件使用
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "今日新闻"
