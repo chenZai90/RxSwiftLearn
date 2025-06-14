@@ -35,13 +35,35 @@ class RxSwiftBaseUseController: UIViewController {
         self.test1()
         self.test2()
         self.test3()
+        self.test4()
         self.test5()
         self.test6()
         self.test7()
+        self.test8()
         scrollerView.delegate = self
         
     }
     
+
+    func test4() {
+        let observable = Observable<String>.create { observer in
+            observer.onNext("Hello")
+            observer.onNext("World")
+            observer.onCompleted()
+            return Disposables.create()
+        }
+
+        observable.subscribe { event in
+            switch event {
+            case .next(let value):
+                print("Received: $value)")
+            case .error(let error):
+                print("Error: $error)")
+            case .completed:
+                print("Completed")
+            }
+        }.disposed(by: disposeBag)
+    }
    
     /*
     // MARK: - Navigation
@@ -300,4 +322,109 @@ extension RxSwiftBaseUseController {
         .disposed(by: disposeBag)
     }
     
+    
+    func test8(){
+        let numbers: Observable<Int> = Observable.create { observer -> Disposable in
+
+            observer.onNext(0)
+            observer.onNext(1)
+            observer.onNext(2)
+            observer.onNext(3)
+            observer.onNext(4)
+            observer.onNext(5)
+            observer.onNext(6)
+            observer.onNext(7)
+            observer.onNext(8)
+            observer.onNext(9)
+            observer.onCompleted()
+
+            return Disposables.create()
+        }
+        
+        print("\(numbers)")
+    }
+ 
+    
+    
+    
+    
 }
+
+
+//MARK: - single 使用
+
+// 定义错误类型
+enum FileReadError: Error {
+    case fileNotFound(String)
+    case invalidJSON(String)
+}
+
+
+// 定义用户模型
+struct RxUser {
+    let username: String
+    let token: String
+}
+
+// 自定义错误类型
+enum AuthError: Error {
+    case invalidCredentials
+}
+
+extension RxSwiftBaseUseController {
+    
+    // 创建 Single：读取并解析本地 JSON 文件
+    func loadJSON(from filename: String) -> Single<[String: Any]> {
+        return Single.create { single in
+            let filePath = Bundle.main.path(forResource: filename, ofType: "json")!
+            
+            // 读取文件内容
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+                
+                // 解析 JSON
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        single(.success(json)) // 成功返回解析结果
+                    } else {
+                        single(.failure(FileReadError.invalidJSON("无法解析 JSON 数据")))
+                    }
+                } catch {
+                    single(.failure(FileReadError.invalidJSON("JSON 解析失败: $error)")))
+                }
+            } catch {
+                single(.failure(FileReadError.fileNotFound("文件未找到: $filename)")))
+            }
+            
+            return Disposables.create {} // 无需额外资源释放
+        }
+    }
+    
+    
+    // 创建 Single：模拟用户登录
+    func login(username: String, password: String) -> Single<RxUser> {
+        return Single.create { single in
+            // 模拟网络请求延迟
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
+                if username == "admin" && password == "123456" {
+                    // ✅ 正确创建 User 实例（结构体名修正为 User）
+                    let user = RxUser(username: "admin", token: "123456")
+                    single(.success(user)) // 使用 .success 表示成功
+                } else {
+                    // ✅ 修正为 Single 的 .error 方法（而非 Result 的 .failure）
+                    single(.failure(AuthError.invalidCredentials))
+                }
+            }
+            
+            // 返回可释放资源（无需额外操作）
+            return Disposables.create {}
+        }
+    }
+    
+ 
+    }
+
+
+
+
+
