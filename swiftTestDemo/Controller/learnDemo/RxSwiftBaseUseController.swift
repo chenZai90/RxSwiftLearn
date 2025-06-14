@@ -6,7 +6,11 @@
 //
 
 
-
+/**
+ 这里的代码示例来源于官方文档，自己只是在研究使用方式的时候完善了一下代码。
+ 像作者致敬，详细的请移步中文文档https://beeth0ven.github.io/RxSwift-Chinese-Documentation/content/why_rxswift.html。
+ 
+ */
 
 import UIKit
 import SnapKit
@@ -29,16 +33,16 @@ class RxSwiftBaseUseController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red
         self.test1()
+        self.test2()
+        self.test3()
+        self.test5()
+        self.test6()
+        self.test7()
         scrollerView.delegate = self
         
     }
     
    
-    
-    
-    
-    
-    
     /*
     // MARK: - Navigation
 
